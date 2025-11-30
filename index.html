@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nasreen Nadaf | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.15);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card-bg: #0f172a;
+      --border-soft: rgba(148, 163, 184, 0.3);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --transition-fast: 0.2s ease;
+      --nav-height: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 40%, #000 100%);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(15, 23, 42, 0.7);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: var(--nav-height);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      width: 32px;
+      height: 32px;
+      background: radial-gradient(circle at 30% 0, #a5b4fc, #4f46e5);
+      color: #0b1020;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav li a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      position: relative;
+      transition: color .2s;
+    }
+
+    nav li a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, #6366f1, #14b8a6);
+      padding: .5rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      color: #0b1020;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        inset: var(--nav-height) 0 auto 0;
+        background: #020617;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        transform: translateY(-110%);
+        opacity: 0;
+        pointer-events: none;
+        transition: .3s ease;
+      }
+
+      nav ul.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-toggle { display: block; }
+    }
+
+    .nav-toggle { display: none; cursor: pointer; color: white; font-size: 1.4rem; }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+    }
+
+    section { padding: 4rem 0; }
+
+    .section-title { font-size: 1.8rem; font-weight: 600; }
+
+    /* HOME */
+    #home {
+      min-height: calc(100vh - var(--nav-height));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-heading {
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(120deg, #c4b5fd, #22c55e, #38bdf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #22c55e);
+      padding: .75rem 1.4rem;
+      border-radius: 80px;
+      font-weight: 600;
+      border: none;
+      color: #0b1020;
+      cursor: pointer;
+      margin-right: .5rem;
+    }
+
+    .btn-ghost {
+      padding: .75rem 1.4rem;
+      border-radius: 80px;
+      border: 1px solid rgba(148,163,184,.5);
+      background: rgba(15,23,42,.8);
+      color: white;
+      cursor: pointer;
+    }
+
+    .hero-right { display: flex; justify-content: flex-end; }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #1f2937, #020617 60%);
+      padding: 1.3rem;
+      border-radius: 26px;
+      border: 1px solid rgba(148,163,184,.4);
+      width: 330px;
+    }
+
+    .hero-avatar {
+      width: 78px;
+      height: 78px;
+      background: linear-gradient(135deg, #4f46e5, #22c55e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 22px;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    /* ABOUT */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .skill-column {
+      background: rgba(15,23,42,.9);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,.4);
+    }
+
+    .skill-list li {
+      background: rgba(15,23,42,.8);
+      border: 1px solid rgba(148,163,184,.6);
+      padding: .25rem .6rem;
+      margin: .25rem 0;
+      border-radius: 999px;
+      font-size: .8rem;
+      display: inline-block;
+    }
+
+    /* PROJECTS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.3rem;
+    }
+
+    .card {
+      background: rgba(15,23,42,.95);
+      border-radius: 15px;
+      border: 1px solid rgba(148,163,184,.4);
+      padding: 1rem;
+    }
+
+    /* CERTIFICATES */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1rem;
+    }
+
+    .cert-item {
+      background: rgba(15,23,42,.9);
+      padding: 1rem;
+      border-radius: 15px;
+      border: 1px solid rgba(148,163,184,.4);
+    }
+
+    /* CONTACT */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .contact-form {
+      background: rgba(15,23,42,.95);
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="nav-container">
+    <div class="logo">
+      <span>N</span>
+      <div>Nasreen Nadaf</div>
+    </div>
+
+    <nav>
+      <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+      <ul id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="nav-cta" onclick="location.href='#contact'">
+            Say Hello <i class="fa-regular fa-paper-plane"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home">
+  <div>
+    <h1 class="hero-heading">
+      Hi, I'm <span class="hero-gradient">Nasreen Nadaf</span><br/>
+      AI/ML & Cloud Enthusiast
+    </h1>
+
+    <p class="hero-text">
+      Third Year Engineering student in MITAOE exploring Machine Learning, Cloud, IoT systems, and automation.
+      I enjoy building practical real-world systems.
+    </p>
+
+    <button class="btn-primary" onclick="location.href='#projects'">View Projects</button>
+       <button class="btn-ghost" onclick="window.open('https://drive.google.com/file/d/1dtaoLW9cE69AR7XsQJ6byrVLskMsI2_L/view?usp=sharing','_blank')">
+  Download CV <i class="fa-regular fa-file-lines"></i>
+</button>
+
+  </div>
+
+  <!-- RIGHT CARD -->
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-avatar">N</div>
+      <div class="hero-role">ML | Cloud | IoT</div>
+      <div class="hero-location">
+        <i class="fa-solid fa-location-dot"></i> India
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm an engineering student with hands-on experience in Machine Learning,
+        IoT systems, AWS Cloud and PLC automation.
+      </p>
+
+      <p>
+        I love exploring how AI, sensors, and cloud tools can be combined to solve 
+        practical problems creatively.
+      </p>
+    </div>
+
+    <div class="about-highlights">
+
+      <!-- CURRENT FOCUS -->
+      <div class="about-card">
+        <h3 class="about-card-title">Current Focus</h3>
+        <p>
+          Prediction of Urban Heat Islands using Google Earth Engine (GEE) and Machine Learning.
+        </p>
+      </div>
+
+      <!-- RECENT WORK UPDATED -->
+      <div class="about-card">
+        <h3 class="about-card-title">Recent Work</h3>
+        <p>
+          Smart AC Controller using ESP32 for temperature automation and energy optimization.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-column">
+      <h3 class="skill-title">Programming</h3>
+      <ul class="skill-list">
+        <li>Python</li>
+        <li>MATLAB</li>
+        <li>C / C++</li>
+      </ul>
+    </div>
+
+    <div class="skill-column">
+      <h3 class="skill-title">Domains</h3>
+      <ul class="skill-list">
+        <li>Machine Learning</li>
+        <li>Cloud Computing</li>
+        <li>IoT & Sensors</li>
+        <li>PLC Automation</li>
+      </ul>
+    </div>
+
+    <div class="skill-column">
+      <h3 class="skill-title">Tools & Platforms</h3>
+      <ul class="skill-list">
+        <li>Google Earth Engine</li>
+        <li>AWS (EC2, S3, ALB)</li>
+        <li>ESP32, Arduino</li>
+        <li>MATLAB & Simulink</li>
+        <li>Colab / Jupyter</li>
+        <li>Git & GitHub</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="cards-grid">
+
+    <!-- Project 1 -->
+    <div class="card">
+      <h3 class="card-title">Urban Heat Island Prediction using GEE + ML</h3>
+      <p class="card-body">
+        Uses satellite imagery and ML models inside Google Earth Engine to 
+        detect and predict UHI patterns for environmental planning.
+      </p>
+      <span class="card-tag">GEE</span>
+      <span class="card-tag">ML</span>
+      <span class="card-tag">Python</span>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="card">
+      <h3 class="card-title">Smart AC Controller using ESP32</h3>
+      <p class="card-body">
+        IoT-based AC controller built using ESP32 for automatic temperature control 
+        and power optimization.
+      </p>
+      <span class="card-tag">ESP32</span>
+      <span class="card-tag">IoT</span>
+      <span class="card-tag">Sensors</span>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="card">
+      <h3 class="card-title">PLC Program for Facing Centre Machine</h3>
+      <p class="card-body">
+        Designed ladder logic to automate the machining cycle with safety interlocks 
+        and workflow logic.
+      </p>
+      <span class="card-tag">PLC</span>
+      <span class="card-tag">Ladder Logic</span>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="card">
+      <h3 class="card-title">Highly Available Cloud App using AWS</h3>
+      <p class="card-body">
+        Built a fault-tolerant cloud architecture using EC2, Load Balancer, Auto Scaling, 
+        and S3 for static hosting.
+      </p>
+      <span class="card-tag">AWS</span>
+      <span class="card-tag">ALB</span>
+      <span class="card-tag">EC2</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certificates">
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="cert-list">
+
+  <div class="cert-item">
+    <h3 class="cert-title">Cisco Networking</h3>
+    <p class="cert-org">Cisco</p>
+    <a href="https://drive.google.com/file/d/1_1AlKaUkq3QmkOSGv8q3YaL1ZAmXAvaP/view?usp=sharing" target="_blank" class="cert-link">
+      <i class="fa-solid fa-link"></i> View Credential
+    </a>
+  </div>
+
+  <div class="cert-item">
+    <h3 class="cert-title">Embedded Systems</h3>
+    <p class="cert-org">Microchip Technology</p>
+    <a href="https://drive.google.com/file/d/1sIKv2qRNDRJobcB1Yveit1AxIfNnO-WY/view?usp=sharing" target="_blank" class="cert-link">
+      <i class="fa-solid fa-link"></i> View Credential
+    </a>
+  </div>
+
+  <div class="cert-item">
+    <h3 class="cert-title">Gen AI Course</h3>
+    <p class="cert-org">Udemy</p>
+    <a href="https://drive.google.com/file/d/13omMc2-wtVw_PCFhAttqo09BRoMKoO2w/view?usp=sharing" target="_blank" class="cert-link">
+      <i class="fa-solid fa-link"></i> View Credential
+    </a>
+  </div>
+
+</div>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Contact Me</h2>
+
+  <p>Email: <strong>nasrennadaf33@gmail.com</strong></p>
+  <p>LinkedIn: <strong>https://www.linkedin.com/in/nasreen-nadaf-2b0973368/</strong></p>
+
+  <form class="contact-form">
+    <div class="form-row">
+      <label>Name</label>
+      <input type="text" placeholder="Your Name" required />
+    </div>
+
+    <div class="form-row">
+      <label>Email</label>
+      <input type="email" placeholder="Your Email" required />
+    </div>
+
+    <div class="form-row">
+      <label>Message</label>
+      <textarea placeholder="Write your message here..." required></textarea>
+    </div>
+
+    <button class="btn-primary" type="submit">
+      Send Message <i class="fa-regular fa-paper-plane"></i>
+    </button>
+  </form>
+</section>
+
+</main>
+
+<footer>© <span id="year"></span> Nasreen Nadaf. All rights reserved.</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById("navToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("open");
+  });
+</script>
+
+</body>
+</html>
